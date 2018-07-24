@@ -1,5 +1,7 @@
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
+import java.util.Arrays;
+
 public class Percolation {
     private int size;
     private boolean[] openState;
@@ -143,6 +145,15 @@ public class Percolation {
     }
 
     public static void main(String[] args) {
+        int[] input = {62, 83, 18, 53, 07, 17, 95, 86, 47, 69, 25, 28};
+        for (int i = 5; i < input.length; i++) {
+            for (int j = i; j >= 5 && input[j] < input[j - 5]; j -= 5) {
+                int swap = input[j];
+                input[j] = input[j - 5];
+                input[j - 5] = swap;
+            }
+        }
+        System.out.println(Arrays.toString(input));
     }
 
 }
